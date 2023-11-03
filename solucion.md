@@ -59,3 +59,23 @@ Creamos una aplicacion llamada todolist:
 python manage.py startapp todolist
 ```
 
+En el fichero task/settings.py en las aplicaciones instaladas añadimos la aplicacion nueva:
+```python
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'todolist',
+]
+```
+
+Agregamos el modelo a la base de datos con el comando:
+```bash
+python manage.py makemigrations todolist
+python manage.py migrate todolist
+```
+
+
