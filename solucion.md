@@ -78,4 +78,30 @@ python manage.py makemigrations todolist
 python manage.py migrate todolist
 ```
 
+Registramos nuestro modelo en el fichero admin 
+```python
+admin.site.register(Task)
+```
 
+Creamos un super usuario para poder acceder con el comando 
+```bash
+python manage.py createsuperuser
+```
+
+Agregamos la url de nuestra aplicacion todolist
+```python
+path('',include('todolist.urls)),
+```
+
+Creamos un fichero urls.py dentro de la carpeta todolist y le agregamos lo siguiente:
+```python
+urlpatterns = [
+    path('', views.task_list, name='task_list'),
+]
+```
+
+En el fichero views.py creamos una vista y añadimos la siguiente mini-vista:
+```python
+def post_list(request):
+    return render(request, 'blog/post_list.html', {})
+```
