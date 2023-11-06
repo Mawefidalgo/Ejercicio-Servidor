@@ -1,0 +1,18 @@
+<html>
+        <head>
+            <title>Task List</title>
+        </head>
+        <body>
+            <h1>Lista de Tareas</h1>
+            <ul>
+                {% for task in tasks %}
+                <li>
+                    <h2>{{ task.title }}</h2>
+                    <p>{{ task.description }} - {% if task.completed %} Sí {% else %} No {% endif %}</p>
+                </li>
+                {% empty %}
+                <p>No hay tareas disponibles.</p>
+                {% endfor %}
+            </ul>
+        </body>
+    </html>

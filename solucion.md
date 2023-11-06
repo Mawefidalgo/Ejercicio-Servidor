@@ -96,12 +96,37 @@ path('',include('todolist.urls)),
 Creamos un fichero urls.py dentro de la carpeta todolist y le agregamos lo siguiente:
 ```python
 urlpatterns = [
-    path('', views.task_list, name='task_list'),
+    path('task/', views.task_list, name='task_list'),
 ]
 ```
 
 En el fichero views.py creamos una vista y añadimos la siguiente mini-vista:
 ```python
-def post_list(request):
-    return render(request, 'blog/post_list.html', {})
+def task_list(request):
+    task = Task.objects.all()
+    return render(request, 'todolist/task_list.html', {"task":task})
+```
+
+Creamos una carpeta templates dentro de todolist y dentro de templates creamos otra carpeta llamada tambien todolist, posteriormente creamos un fichero dentro de esta llamado task_list.HTML
+
+En el fichero task_list.HTML le ponemos el titulo To do list y agregamos el codigo:
+```python
+<html>
+        <head>
+            <title>Task List</title>
+        </head>
+        <body>
+            <h1>Lista de Tareas</h1>
+            <ul>
+                {% for task in tasks %}
+                <li>
+                    <h2>{{ task.title }}</h2>
+                    <p>{{ task.description }} - {% if task.completed %} Sí {% else %} No {% endif %}</p>
+                </li>
+                {% empty %}
+                <p>No hay tareas disponibles.</p>
+                {% endfor %}
+            </ul>
+        </body>
+    </html>
 ```
