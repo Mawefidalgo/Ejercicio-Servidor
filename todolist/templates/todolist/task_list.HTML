@@ -4,6 +4,11 @@
         </head>
         <body>
             <h1>Lista de Tareas</h1>
+            <form action="{% url 'task_list' %}" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Submit</button>
+            </form>
             <ul>
                 {% for task in tasks %}
                 <li>
