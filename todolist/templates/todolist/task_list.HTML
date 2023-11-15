@@ -9,12 +9,11 @@
                 {{ form.as_p }}
                 <button type="submit">Submit</button>
             </form>
+            <button type="button" value="{% url 'new' %}">New</button>
+            <h2>Lista de tareas</h2>
             <ul>
                 {% for task in tasks %}
-                <li>
-                    <h2>{{ task.title }}</h2>
-                    <p>{{ task.description }} - {% if task.completed %} Sí {% else %} No {% endif %}</p>
-                </li>
+                <li><a href="{% url 'detail' pk=task.pk %}" >{{ task.title }}</a></li>
                 {% empty %}
                 <p>No hay tareas disponibles.</p>
                 {% endfor %}

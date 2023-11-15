@@ -1,0 +1,14 @@
+<html>
+<head>
+    <title>Detalles</title>
+</head>
+<body>
+    <h2>Lista de tareas</h2>
+    <div class="task">
+            <ul>
+                <li> {{ details.title }} </li>
+                <li> {{ details.description }} ({{ details.completed|yesno:"Si,No" }})</li>
+            </ul>
+        </div>
+</body>
+</html>
